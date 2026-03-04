@@ -545,7 +545,7 @@ buildSurvey();
 buildNPS();
 buildImprovements();
 // Show admin only if ?admin in URL
-if(window.location.search.includes("admin")){
+if(window.location.hash.includes("admin") || window.location.search.includes("admin")){
   document.getElementById("view-survey").classList.remove("active");
   document.getElementById("view-admin").classList.add("active");
 }
