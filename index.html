@@ -544,11 +544,23 @@ function exportCSV() {
 buildSurvey();
 buildNPS();
 buildImprovements();
-// Show admin only if ?admin in URL
-if(window.location.hash.includes("admin") || window.location.search.includes("admin")){
-  document.getElementById("view-survey").classList.remove("active");
-  document.getElementById("view-admin").classList.add("active");
-}
+
+</script>
+
+<!-- Hidden admin access -->
+<div style="text-align:center;padding:20px 0 10px;opacity:0">
+  <span id="hiddenAdmin" onclick="activateAdmin()" style="cursor:pointer;font-size:10px;color:transparent;user-select:none">·</span>
+</div>
+<script>
+var clickCount = 0;
+document.getElementById('hiddenAdmin').addEventListener('click', function(){
+  clickCount++;
+  if(clickCount >= 5){
+    document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
+    document.getElementById('view-admin').classList.add('active');
+    clickCount = 0;
+  }
+});
 </script>
 </body>
 </html>
