@@ -411,8 +411,8 @@ async function submitSurvey() {
 
   const numVals = QUESTIONS.map((_,i) => answers[i] && answers[i] !== 'ns' ? parseInt(answers[i]) : null).filter(v => v !== null);
   const avg = numVals.length ? (numVals.reduce((a,b)=>a+b,0)/numVals.length).toFixed(2) : '';
-  const headers = ['Fecha','Nombre','Servicio','Anónimo',...QUESTIONS.map((_,i)=>`P${i+1}`),'Promedio','NPS','Areas a mejorar','Tecnicas/servicios solicitados','Sugerencias'];
-  const row = [new Date().toLocaleString('es-AR'), nombre, servicio, isAnon?'Sí':'No', ...QUESTIONS.map((_,i)=>answers[i]||''), avg, nps, improvements, newServices, suggestions];
+  const headers = ['Encuesta','Fecha','Nombre','Servicio','Anónimo',...QUESTIONS.map((_,i)=>`P${i+1}`),'Promedio','NPS','Areas a mejorar','Tecnicas/servicios solicitados','Sugerencias'];
+  const row = ['Encuesta AP 2026', new Date().toLocaleString('es-AR'), nombre, servicio, isAnon?'Sí':'No', ...QUESTIONS.map((_,i)=>answers[i]||''), avg, nps, improvements, newServices, suggestions];
 
   document.getElementById('sendingOverlay').classList.add('show');
   document.getElementById('btnSubmit').disabled = true;
